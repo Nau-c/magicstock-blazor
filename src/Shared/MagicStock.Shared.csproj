@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <WarningsNotAsErrors>CS1591</WarningsNotAsErrors>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="System.ComponentModel.DataAnnotations" Version="5.0.0" />
+        <PackageReference Include="FluentValidation" Version="11.8.0" />
+        <PackageReference Include="System.Text.Json" Version="8.0.0" />
+    </ItemGroup>
+
+</Project> 
