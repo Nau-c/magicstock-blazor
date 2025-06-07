@@ -1,0 +1,7 @@
+C:\Users\nauze\Documents\DEV\magicstock-blazor\src\Client\obj\Debug\net8.0\MagicStock.Client.csproj.AssemblyReference.cache
+C:\Users\nauze\Documents\DEV\magicstock-blazor\src\Client\obj\Debug\net8.0\MagicStock.Client.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nauze\Documents\DEV\magicstock-blazor\src\Client\obj\Debug\net8.0\MagicStock.Client.AssemblyInfoInputs.cache
+C:\Users\nauze\Documents\DEV\magicstock-blazor\src\Client\obj\Debug\net8.0\MagicStock.Client.AssemblyInfo.cs
+C:\Users\nauze\Documents\DEV\magicstock-blazor\src\Client\obj\Debug\net8.0\MagicStock.Client.csproj.CoreCompileInputs.cache
+C:\Users\nauze\Documents\DEV\magicstock-blazor\src\Client\obj\Debug\net8.0\MagicStock.Client.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\nauze\Documents\DEV\magicstock-blazor\src\Client\obj\Debug\net8.0\MagicStock.Client.sourcelink.json

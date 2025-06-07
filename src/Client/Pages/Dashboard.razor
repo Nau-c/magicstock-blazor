@@ -142,7 +142,7 @@
                         {
                             <div class="stat-item">
                                 <div class="stat-label">
-                                    <MudChip Color="GetRarityColor(rarity.Key)" Size="Size.Small">
+                                    <MudChip T="string" Color="GetRarityColor(rarity.Key)" Size="Size.Small">
                                         @rarity.Key
                                     </MudChip>
                                 </div>
@@ -171,7 +171,7 @@
                         {
                             <div class="stat-item">
                                 <div class="stat-label">
-                                    <MudChip Style="@GetManaColorStyle(color.Key)" Size="Size.Small">
+                                    <MudChip T="string" Style="@GetManaColorStyle(color.Key)" Size="Size.Small">
                                         @color.Key
                                     </MudChip>
                                 </div>
@@ -199,10 +199,10 @@
                 <MudCardContent>
                     @if (topValueCards?.Any() == true)
                     {
-                        <MudList>
+                        <MudList T="string">
                             @foreach (var card in topValueCards.Take(5))
                             {
-                                <MudListItem Class="top-card-item">
+                                <MudListItem T="string" Class="top-card-item">
                                     <div class="top-card-content">
                                         <MudAvatar Image="@card.ImageUrl" Size="Size.Medium" Class="mr-3" />
                                         <div class="card-info">

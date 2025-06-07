@@ -21,7 +21,7 @@
         <MudNavLink Href="/stock" 
                    Icon="Icons.Material.Filled.Inventory">
             Mi Stock
-            <MudChip Size="Size.Small" 
+            <MudChip T="string" Size="Size.Small" 
                     Color="Color.Success" 
                     Class="ml-auto">
                 245
@@ -96,7 +96,7 @@
                    Icon="Icons.Material.Filled.Store"
                    Class="coming-soon">
             Marketplace
-            <MudChip Size="Size.Small" 
+            <MudChip T="string" Size="Size.Small" 
                     Color="Color.Info" 
                     Variant="Variant.Outlined"
                     Class="ml-auto">
@@ -108,7 +108,7 @@
                    Icon="Icons.Material.Filled.SwapHoriz"
                    Class="coming-soon">
             Intercambios
-            <MudChip Size="Size.Small" 
+            <MudChip T="string" Size="Size.Small" 
                     Color="Color.Info" 
                     Variant="Variant.Outlined"
                     Class="ml-auto">
@@ -120,7 +120,7 @@
                    Icon="Icons.Material.Filled.Share"
                    Class="coming-soon">
             Compartir Colección
-            <MudChip Size="Size.Small" 
+            <MudChip T="string" Size="Size.Small" 
                     Color="Color.Info" 
                     Variant="Variant.Outlined"
                     Class="ml-auto">
@@ -170,7 +170,7 @@
         <MudNavLink Href="/changelog" 
                    Icon="Icons.Material.Filled.NewReleases">
             Novedades
-            <MudChip Size="Size.Small" 
+            <MudChip T="string" Size="Size.Small" 
                     Color="Color.Success" 
                     Class="ml-auto">
                 v1.1
@@ -181,7 +181,7 @@
 
 <!-- Estado de conexión -->
 <div class="connection-status">
-    <MudChip Icon="@connectionIcon" 
+    <MudChip T="string" Icon="@connectionIcon" 
             Color="@connectionColor" 
             Size="Size.Small"
             Variant="Variant.Filled">

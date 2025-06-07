@@ -1,4 +1,5 @@
 using MagicStock.Shared.Models;
+using MagicStock.Shared.DTOs;
 
 namespace MagicStock.Client.Services.Interfaces;
 
