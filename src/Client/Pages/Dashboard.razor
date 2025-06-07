@@ -1,0 +1,465 @@
+@page "/dashboard"
+@using MagicStock.Client.Services.Interfaces
+@using MagicStock.Shared.Models
+@using ChartJs.Blazor
+@using ChartJs.Blazor.Common
+@using ChartJs.Blazor.PieChart
+@using ChartJs.Blazor.LineChart
+@using ChartJs.Blazor.BarChart
+@using MudBlazor
+@inject IDashboardService DashboardService
+@inject ISnackbar Snackbar
+@inject IJSRuntime JSRuntime
+
+<PageTitle>📊 Dashboard - MagicStock</PageTitle>
+
+<div class="dashboard-container">
+    <!-- Header con animación -->
+    <div class="dashboard-header animate-fade-in-down">
+        <MudText Typo="Typo.h3" Class="mb-2">
+            <MudIcon Icon="Icons.Material.Filled.Dashboard" Class="mr-3" />
+            Dashboard de Stock
+        </MudText>
+        <MudText Typo="Typo.subtitle1" Color="Color.Secondary">
+            Análisis completo de tu colección Magic: The Gathering
+        </MudText>
+        
+        <div class="dashboard-actions mt-4">
+            <MudButton Variant="Variant.Filled" 
+                      Color="Color.Primary" 
+                      StartIcon="Icons.Material.Filled.Refresh"
+                      OnClick="RefreshDataAsync"
+                      Class="mr-2">
+                Actualizar
+            </MudButton>
+            <MudButton Variant="Variant.Outlined" 
+                      Color="Color.Secondary" 
+                      StartIcon="Icons.Material.Filled.FileDownload"
+                      OnClick="ExportDataAsync">
+                Exportar
+            </MudButton>
+        </div>
+    </div>
+
+    @if (isLoading)
+    {
+        <!-- Skeleton loading profesional -->
+        <div class="dashboard-skeleton">
+            @for (int i = 0; i < 6; i++)
+            {
+                <MudCard Class="mb-4">
+                    <MudCardContent>
+                        <MudSkeleton SkeletonType="SkeletonType.Rectangle" Height="200px" />
+                    </MudCardContent>
+                </MudCard>
+            }
+        </div>
+    }
+    else if (stockStats != null)
+    {
+        <!-- KPI Cards con animaciones -->
+        <div class="kpi-grid animate-fade-in-up">
+            <MudCard Class="kpi-card total-value" Elevation="3">
+                <MudCardContent>
+                    <div class="kpi-content">
+                        <MudIcon Icon="Icons.Material.Filled.AttachMoney" Class="kpi-icon" />
+                        <div>
+                            <MudText Typo="Typo.h4" Class="kpi-value">
+                                @stockStats.TotalValue.ToString("C")
+                            </MudText>
+                            <MudText Typo="Typo.subtitle2" Color="Color.Secondary">
+                                Valor Total
+                            </MudText>
+                        </div>
+                    </div>
+                </MudCardContent>
+            </MudCard>
+
+            <MudCard Class="kpi-card total-cards" Elevation="3">
+                <MudCardContent>
+                    <div class="kpi-content">
+                        <MudIcon Icon="Icons.Material.Filled.Style" Class="kpi-icon" />
+                        <div>
+                            <MudText Typo="Typo.h4" Class="kpi-value">
+                                @stockStats.TotalCards
+                            </MudText>
+                            <MudText Typo="Typo.subtitle2" Color="Color.Secondary">
+                                Total Cartas
+                            </MudText>
+                        </div>
+                    </div>
+                </MudCardContent>
+            </MudCard>
+
+            <MudCard Class="kpi-card unique-cards" Elevation="3">
+                <MudCardContent>
+                    <div class="kpi-content">
+                        <MudIcon Icon="Icons.Material.Filled.AutoAwesome" Class="kpi-icon" />
+                        <div>
+                            <MudText Typo="Typo.h4" Class="kpi-value">
+                                @stockStats.UniqueCards
+                            </MudText>
+                            <MudText Typo="Typo.subtitle2" Color="Color.Secondary">
+                                Cartas Únicas
+                            </MudText>
+                        </div>
+                    </div>
+                </MudCardContent>
+            </MudCard>
+
+            <MudCard Class="kpi-card average-value" Elevation="3">
+                <MudCardContent>
+                    <div class="kpi-content">
+                        <MudIcon Icon="Icons.Material.Filled.TrendingUp" Class="kpi-icon" />
+                        <div>
+                            <MudText Typo="Typo.h4" Class="kpi-value">
+                                @stockStats.AverageCardValue.ToString("C")
+                            </MudText>
+                            <MudText Typo="Typo.subtitle2" Color="Color.Secondary">
+                                Valor Promedio
+                            </MudText>
+                        </div>
+                    </div>
+                </MudCardContent>
+            </MudCard>
+        </div>
+
+        <!-- Distribuciones y estadísticas -->
+        <div class="stats-grid animate-fade-in-up delay-1">
+            <MudCard Class="stats-card" Elevation="3">
+                <MudCardHeader>
+                    <CardHeaderContent>
+                        <MudText Typo="Typo.h6">
+                            <MudIcon Icon="Icons.Material.Filled.Diamond" Class="mr-2" />
+                            Distribución por Rareza
+                        </MudText>
+                    </CardHeaderContent>
+                </MudCardHeader>
+                <MudCardContent>
+                    @if (stockStats.RarityDistribution?.Any() == true)
+                    {
+                        @foreach (var rarity in stockStats.RarityDistribution)
+                        {
+                            <div class="stat-item">
+                                <div class="stat-label">
+                                    <MudChip Color="GetRarityColor(rarity.Key)" Size="Size.Small">
+                                        @rarity.Key
+                                    </MudChip>
+                                </div>
+                                <div class="stat-value">
+                                    <MudText Typo="Typo.body1">@rarity.Value cartas</MudText>
+                                </div>
+                            </div>
+                        }
+                    }
+                </MudCardContent>
+            </MudCard>
+
+            <MudCard Class="stats-card" Elevation="3">
+                <MudCardHeader>
+                    <CardHeaderContent>
+                        <MudText Typo="Typo.h6">
+                            <MudIcon Icon="Icons.Material.Filled.Palette" Class="mr-2" />
+                            Distribución por Colores
+                        </MudText>
+                    </CardHeaderContent>
+                </MudCardHeader>
+                <MudCardContent>
+                    @if (stockStats.ColorDistribution?.Any() == true)
+                    {
+                        @foreach (var color in stockStats.ColorDistribution)
+                        {
+                            <div class="stat-item">
+                                <div class="stat-label">
+                                    <MudChip Style="@GetManaColorStyle(color.Key)" Size="Size.Small">
+                                        @color.Key
+                                    </MudChip>
+                                </div>
+                                <div class="stat-value">
+                                    <MudText Typo="Typo.body1">@color.Value cartas</MudText>
+                                </div>
+                            </div>
+                        }
+                    }
+                </MudCardContent>
+            </MudCard>
+        </div>
+
+        <!-- Top Cards -->
+        <div class="top-cards-section animate-fade-in-up delay-2">
+            <MudCard Class="top-cards-card" Elevation="3">
+                <MudCardHeader>
+                    <CardHeaderContent>
+                        <MudText Typo="Typo.h6">
+                            <MudIcon Icon="Icons.Material.Filled.Star" Class="mr-2" />
+                            Top Cartas Más Valiosas
+                        </MudText>
+                    </CardHeaderContent>
+                </MudCardHeader>
+                <MudCardContent>
+                    @if (topValueCards?.Any() == true)
+                    {
+                        <MudList>
+                            @foreach (var card in topValueCards.Take(5))
+                            {
+                                <MudListItem Class="top-card-item">
+                                    <div class="top-card-content">
+                                        <MudAvatar Image="@card.ImageUrl" Size="Size.Medium" Class="mr-3" />
+                                        <div class="card-info">
+                                            <MudText Typo="Typo.subtitle1">@card.Name</MudText>
+                                            <MudText Typo="Typo.caption" Color="Color.Secondary">
+                                                @card.SetName • @card.Rarity
+                                            </MudText>
+                                        </div>
+                                        <div class="card-value">
+                                            <MudText Typo="Typo.h6" Color="Color.Success">
+                                                @card.CurrentPrice?.ToString("C")
+                                            </MudText>
+                                            <MudText Typo="Typo.caption">
+                                                x@card.StockQuantity
+                                            </MudText>
+                                        </div>
+                                    </div>
+                                </MudListItem>
+                            }
+                        </MudList>
+                    }
+                    else
+                    {
+                        <MudText Typo="Typo.body2" Color="Color.Secondary">
+                            No hay cartas en el stock
+                        </MudText>
+                    }
+                </MudCardContent>
+            </MudCard>
+        </div>
+    }
+</div>
+
+<style>
+    .dashboard-container {
+        padding: 24px;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .dashboard-header {
+        margin-bottom: 32px;
+        text-align: center;
+    }
+
+    .dashboard-actions {
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+    }
+
+    .kpi-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 24px;
+        margin-bottom: 32px;
+    }
+
+    .kpi-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .kpi-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+
+    .kpi-content {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .kpi-icon {
+        font-size: 3rem;
+        opacity: 0.8;
+    }
+
+    .total-value .kpi-icon { color: var(--mud-palette-success); }
+    .total-cards .kpi-icon { color: var(--mud-palette-primary); }
+    .unique-cards .kpi-icon { color: var(--mud-palette-secondary); }
+    .average-value .kpi-icon { color: var(--mud-palette-tertiary); }
+
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 24px;
+        margin-bottom: 32px;
+    }
+
+    .stat-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 0;
+        border-bottom: 1px solid var(--mud-palette-divider);
+    }
+
+    .stat-item:last-child {
+        border-bottom: none;
+    }
+
+    .top-cards-section {
+        margin-bottom: 32px;
+    }
+
+    .top-card-item {
+        border-bottom: 1px solid var(--mud-palette-divider);
+        padding: 12px 0;
+    }
+
+    .top-card-content {
+        display: flex;
+        align-items: center;
+        width: 100%;
+    }
+
+    .card-info {
+        flex: 1;
+    }
+
+    .card-value {
+        text-align: right;
+    }
+
+    /* Animaciones */
+    .animate-fade-in-down {
+        animation: fadeInDown 0.6s ease-out;
+    }
+
+    .animate-fade-in-up {
+        animation: fadeInUp 0.6s ease-out;
+    }
+
+    .delay-1 {
+        animation-delay: 0.3s;
+        opacity: 0;
+        animation-fill-mode: forwards;
+    }
+
+    .delay-2 {
+        animation-delay: 0.6s;
+        opacity: 0;
+        animation-fill-mode: forwards;
+    }
+
+    @keyframes fadeInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .dashboard-container {
+            padding: 16px;
+        }
+        
+        .kpi-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .stats-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+@code {
+    private bool isLoading = true;
+    private StockStatsDto? stockStats;
+    private IEnumerable<MagicCardDto>? topValueCards;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadDashboardDataAsync();
+    }
+
+    private async Task LoadDashboardDataAsync()
+    {
+        try
+        {
+            isLoading = true;
+            StateHasChanged();
+
+            // Cargar datos en paralelo para mejor performance
+            var statsTask = DashboardService.GetStockStatsAsync();
+            var topCardsTask = DashboardService.GetTopValueCardsAsync(10);
+
+            await Task.WhenAll(statsTask, topCardsTask);
+
+            stockStats = await statsTask;
+            topValueCards = await topCardsTask;
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add($"Error cargando dashboard: {ex.Message}", Severity.Error);
+        }
+        finally
+        {
+            isLoading = false;
+            StateHasChanged();
+        }
+    }
+
+    private async Task RefreshDataAsync()
+    {
+        await LoadDashboardDataAsync();
+        Snackbar.Add("Dashboard actualizado", Severity.Success);
+    }
+
+    private async Task ExportDataAsync()
+    {
+        try
+        {
+            var data = await DashboardService.ExportStatsAsync(ExportFormat.Json);
+            await JSRuntime.InvokeVoidAsync("downloadFile", "dashboard-stats.json", Convert.ToBase64String(data));
+            Snackbar.Add("Datos exportados correctamente", Severity.Success);
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add($"Error exportando datos: {ex.Message}", Severity.Error);
+        }
+    }
+
+    private static Color GetRarityColor(string rarity) => rarity.ToLower() switch
+    {
+        "mythic" => Color.Warning,
+        "rare" => Color.Primary,
+        "uncommon" => Color.Secondary,
+        "common" => Color.Default,
+        _ => Color.Default
+    };
+
+    private static string GetManaColorStyle(string color) => color.ToLower() switch
+    {
+        "white" or "w" => "background-color: #FFFBD5; color: #000;",
+        "blue" or "u" => "background-color: #0E68AB; color: #fff;",
+        "black" or "b" => "background-color: #150B00; color: #fff;",
+        "red" or "r" => "background-color: #D3202A; color: #fff;",
+        "green" or "g" => "background-color: #00733E; color: #fff;",
+        "colorless" => "background-color: #CAC5C0; color: #000;",
+        _ => "background-color: #808080; color: #fff;"
+    };
+} 
