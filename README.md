@@ -200,7 +200,7 @@ Usamos [Conventional Commits](https://www.conventionalcommits.org/):
 
 ## 👨‍💻 Desarrollado por
 
-**[Tu Nombre]** - *Senior .NET Developer*
+**[Nauzet López Mendoza]** - *Senior .NET Developer*
 - LinkedIn: [tu-perfil](https://linkedin.com/in/tu-perfil)
 - GitHub: [@tu-usuario](https://github.com/tu-usuario)
 - Email: tu.email@ejemplo.com
