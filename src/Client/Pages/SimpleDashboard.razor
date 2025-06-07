@@ -1,0 +1,159 @@
+@page "/dashboard"
+@using MagicStock.Client.Services
+@using MagicStock.Shared.DTOs
+@inject IDashboardService DashboardService
+
+<PageTitle>📊 Dashboard - MagicStock</PageTitle>
+
+<div class="dashboard-container">
+    <MudText Typo="Typo.h3" Class="mb-4">
+        <MudIcon Icon="Icons.Material.Filled.Dashboard" Class="mr-3" />
+        Dashboard de Stock
+    </MudText>
+
+    @if (isLoading)
+    {
+        <MudProgressCircular Indeterminate="true" />
+        <MudText>Cargando estadísticas...</MudText>
+    }
+    else if (stockStats != null)
+    {
+        <!-- KPI Cards -->
+        <div class="kpi-grid">
+            <MudCard Elevation="3">
+                <MudCardContent>
+                    <div class="kpi-content">
+                        <MudIcon Icon="Icons.Material.Filled.AttachMoney" Class="kpi-icon" />
+                        <div>
+                            <MudText Typo="Typo.h4">@stockStats.TotalValue.ToString("C")</MudText>
+                            <MudText Typo="Typo.subtitle2" Color="Color.Secondary">Valor Total</MudText>
+                        </div>
+                    </div>
+                </MudCardContent>
+            </MudCard>
+
+            <MudCard Elevation="3">
+                <MudCardContent>
+                    <div class="kpi-content">
+                        <MudIcon Icon="Icons.Material.Filled.Style" Class="kpi-icon" />
+                        <div>
+                            <MudText Typo="Typo.h4">@stockStats.TotalCards</MudText>
+                            <MudText Typo="Typo.subtitle2" Color="Color.Secondary">Total Cartas</MudText>
+                        </div>
+                    </div>
+                </MudCardContent>
+            </MudCard>
+
+            <MudCard Elevation="3">
+                <MudCardContent>
+                    <div class="kpi-content">
+                        <MudIcon Icon="Icons.Material.Filled.AutoAwesome" Class="kpi-icon" />
+                        <div>
+                            <MudText Typo="Typo.h4">@stockStats.UniqueCards</MudText>
+                            <MudText Typo="Typo.subtitle2" Color="Color.Secondary">Cartas Únicas</MudText>
+                        </div>
+                    </div>
+                </MudCardContent>
+            </MudCard>
+
+            <MudCard Elevation="3">
+                <MudCardContent>
+                    <div class="kpi-content">
+                        <MudIcon Icon="Icons.Material.Filled.TrendingUp" Class="kpi-icon" />
+                        <div>
+                            <MudText Typo="Typo.h4">@stockStats.AverageCardValue.ToString("C")</MudText>
+                            <MudText Typo="Typo.subtitle2" Color="Color.Secondary">Valor Promedio</MudText>
+                        </div>
+                    </div>
+                </MudCardContent>
+            </MudCard>
+        </div>
+
+        <!-- Distribuciones -->
+        <div class="stats-grid">
+            <MudCard Elevation="3">
+                <MudCardHeader>
+                    <CardHeaderContent>
+                        <MudText Typo="Typo.h6">
+                            <MudIcon Icon="Icons.Material.Filled.Diamond" Class="mr-2" />
+                            Distribución por Rareza
+                        </MudText>
+                    </CardHeaderContent>
+                </MudCardHeader>
+                <MudCardContent>
+                    @if (stockStats.RarityDistribution?.Any() == true)
+                    {
+                        @foreach (var rarity in stockStats.RarityDistribution)
+                        {
+                            <div class="stat-item">
+                                <div class="stat-label">
+                                    <MudChip T="string" Size="Size.Small">@rarity.Key</MudChip>
+                                </div>
+                                <div class="stat-value">
+                                    <MudText Typo="Typo.body1">@rarity.Value cartas</MudText>
+                                </div>
+                            </div>
+                        }
+                    }
+                </MudCardContent>
+            </MudCard>
+
+            <MudCard Elevation="3">
+                <MudCardHeader>
+                    <CardHeaderContent>
+                        <MudText Typo="Typo.h6">
+                            <MudIcon Icon="Icons.Material.Filled.Palette" Class="mr-2" />
+                            Distribución por Colores
+                        </MudText>
+                    </CardHeaderContent>
+                </MudCardHeader>
+                <MudCardContent>
+                    @if (stockStats.ColorDistribution?.Any() == true)
+                    {
+                        @foreach (var color in stockStats.ColorDistribution)
+                        {
+                            <div class="stat-item">
+                                <div class="stat-label">
+                                    <MudChip T="string" Size="Size.Small">@color.Key</MudChip>
+                                </div>
+                                <div class="stat-value">
+                                    <MudText Typo="Typo.body1">@color.Value cartas</MudText>
+                                </div>
+                            </div>
+                        }
+                    }
+                </MudCardContent>
+            </MudCard>
+        </div>
+    }
+</div>
+
+<style>
+    .dashboard-container { padding: 24px; }
+    .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; margin-bottom: 32px; }
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 24px; }
+    .kpi-content { display: flex; align-items: center; gap: 16px; }
+    .kpi-icon { font-size: 3rem; opacity: 0.8; color: var(--mud-palette-primary); }
+    .stat-item { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; }
+</style>
+
+@code {
+    private bool isLoading = true;
+    private StockStatsDto? stockStats;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            stockStats = await DashboardService.GetStockStatsAsync();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading stats: {ex.Message}");
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+} 

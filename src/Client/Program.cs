@@ -3,12 +3,11 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using MudBlazor.Services;
 using Blazored.LocalStorage;
 using MagicStock.Client.Services;
-using MagicStock.Client.Services.Interfaces;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
 // Configuración de componentes raíz
-builder.RootComponents.Add<App>("#app");
+builder.RootComponents.Add<MagicStock.Client.App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
 // HttpClient básico
@@ -28,17 +27,17 @@ builder.Services.AddMudServices(config =>
 builder.Services.AddBlazoredLocalStorage();
 
 // Servicios de aplicación
-builder.Services.AddScoped<IDashboardService, DashboardService>();
-builder.Services.AddScoped<IFilterService, FilterService>();
-builder.Services.AddScoped<IScryfallApiService, ScryfallApiService>();
-builder.Services.AddScoped<ICardService, CardService>();
-builder.Services.AddScoped<IStockService, StockService>();
-builder.Services.AddScoped<IThemeService, ThemeService>();
-builder.Services.AddScoped<IAnalyticsService, AnalyticsService>();
-builder.Services.AddScoped<INotificationService, NotificationService>();
-builder.Services.AddScoped<ICacheService, CacheService>();
-builder.Services.AddScoped<IChartService, ChartService>();
-builder.Services.AddScoped<IPwaService, PwaService>();
+builder.Services.AddScoped<IDashboardService, SimpleDashboardService>();
+builder.Services.AddScoped<IFilterService, SimpleFilterService>();
+builder.Services.AddScoped<IScryfallApiService, SimpleScryfallApiService>();
+builder.Services.AddScoped<ICardService, SimpleCardService>();
+builder.Services.AddScoped<IStockService, SimpleStockService>();
+builder.Services.AddScoped<IThemeService, SimpleThemeService>();
+builder.Services.AddScoped<IAnalyticsService, SimpleAnalyticsService>();
+builder.Services.AddScoped<INotificationService, SimpleNotificationService>();
+builder.Services.AddScoped<ICacheService, SimpleCacheService>();
+builder.Services.AddScoped<IChartService, SimpleChartService>();
+builder.Services.AddScoped<IPwaService, SimplePwaService>();
 
 // Cache en memoria
 builder.Services.AddMemoryCache();
