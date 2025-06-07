@@ -46,26 +46,6 @@
           }
         }
       },
-      "BlazorAnimate/3.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNetCore.Components": "3.1.0",
-          "Microsoft.AspNetCore.Components.Web": "3.1.0",
-          "MinVer": "2.0.0"
-        },
-        "compile": {
-          "lib/netstandard2.0/BlazorAnimate.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/BlazorAnimate.dll": {}
-        },
-        "build": {
-          "buildTransitive/BlazorAnimate.props": {}
-        },
-        "buildMultiTargeting": {
-          "buildMultiTargeting/BlazorAnimate.props": {}
-        }
-      },
       "Blazored.LocalStorage/4.4.0": {
         "type": "package",
         "dependencies": {
@@ -190,23 +170,6 @@
           "buildTransitive/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets": {}
         }
       },
-      "Microsoft.AspNetCore.Components.Authorization/8.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNetCore.Authorization": "8.0.0",
-          "Microsoft.AspNetCore.Components": "8.0.0"
-        },
-        "compile": {
-          "lib/net8.0/Microsoft.AspNetCore.Components.Authorization.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net8.0/Microsoft.AspNetCore.Components.Authorization.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "Microsoft.AspNetCore.Components.Forms/8.0.10": {
         "type": "package",
         "dependencies": {
@@ -265,29 +228,6 @@
         },
         "build": {
           "build/net8.0/_._": {}
-        }
-      },
-      "Microsoft.AspNetCore.Components.WebAssembly.Authentication/8.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNetCore.Components.Authorization": "8.0.0",
-          "Microsoft.AspNetCore.Components.Web": "8.0.0"
-        },
-        "compile": {
-          "lib/net8.0/Microsoft.AspNetCore.Components.WebAssembly.Authentication.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net8.0/Microsoft.AspNetCore.Components.WebAssembly.Authentication.dll": {
-            "related": ".xml"
-          }
-        },
-        "build": {
-          "buildTransitive/Microsoft.AspNetCore.Components.WebAssembly.Authentication.props": {}
-        },
-        "buildMultiTargeting": {
-          "buildMultiTargeting/Microsoft.AspNetCore.Components.WebAssembly.Authentication.props": {}
         }
       },
       "Microsoft.AspNetCore.Components.WebAssembly.Server/8.0.10": {
@@ -1767,15 +1707,6 @@
           }
         }
       },
-      "MinVer/2.0.0": {
-        "type": "package",
-        "build": {
-          "build/_._": {}
-        },
-        "buildMultiTargeting": {
-          "buildMultiTargeting/_._": {}
-        }
-      },
       "Mono.TextTemplating/2.2.1": {
         "type": "package",
         "dependencies": {
@@ -1897,35 +1828,6 @@
         },
         "runtime": {
           "lib/netstandard2.0/NuGet.Frameworks.dll": {}
-        }
-      },
-      "Polly/7.1.0": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard2.0/Polly.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/netstandard2.0/Polly.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "Polly.Extensions.Http/3.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Polly": "7.1.0"
-        },
-        "compile": {
-          "lib/netstandard2.0/Polly.Extensions.Http.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/netstandard2.0/Polly.Extensions.Http.dll": {
-            "related": ".xml"
-          }
         }
       },
       "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
@@ -4034,19 +3936,14 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "Blazor.Analytics": "3.10.0",
-          "BlazorAnimate": "3.0.0",
           "Blazored.LocalStorage": "4.4.0",
           "Blazored.Toast": "4.1.0",
-          "ChartJs.Blazor": "2.0.2",
           "MagicStock.Shared": "1.0.0",
           "Microsoft.AspNetCore.Components.WebAssembly": "8.0.10",
-          "Microsoft.AspNetCore.Components.WebAssembly.Authentication": "8.0.0",
-          "Microsoft.Extensions.Caching.Memory": "8.0.0",
+          "Microsoft.Extensions.Caching.Memory": "8.0.1",
           "Microsoft.Extensions.Http": "8.0.1",
-          "Microsoft.Extensions.Logging": "8.0.0",
+          "Microsoft.Extensions.Logging": "8.0.1",
           "MudBlazor": "7.8.0",
-          "Polly.Extensions.Http": "3.0.0",
           "System.Net.Http.Json": "8.0.1"
         },
         "compile": {
@@ -4136,24 +4033,6 @@
         "azureicon.png",
         "lib/netstandard2.0/Azure.Identity.dll",
         "lib/netstandard2.0/Azure.Identity.xml"
-      ]
-    },
-    "BlazorAnimate/3.0.0": {
-      "sha512": "IUX/IFdEKiQ5ncZ5/iVhaZynWL2dA04lH9ieza9JhBj/jJH8f2NwM6OqdJFm7RfkFdbkIH8t2Bxd/laZS2EXWQ==",
-      "type": "package",
-      "path": "blazoranimate/3.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "blazoranimate.3.0.0.nupkg.sha512",
-        "blazoranimate.nuspec",
-        "build/BlazorAnimate.props",
-        "build/Microsoft.AspNetCore.StaticWebAssets.props",
-        "buildMultiTargeting/BlazorAnimate.props",
-        "buildTransitive/BlazorAnimate.props",
-        "lib/netstandard2.0/BlazorAnimate.dll",
-        "staticwebassets/aos.css",
-        "staticwebassets/blazorAnimateInterop.js"
       ]
     },
     "Blazored.LocalStorage/4.4.0": {
@@ -4364,21 +4243,6 @@
         "microsoft.aspnetcore.components.analyzers.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.Components.Authorization/8.0.0": {
-      "sha512": "GlaNfvmRQAmXMrNlJcQJcB/K8ptShc121sQdqc82Yigd6d7lMVbMKI/P+rNr1ReEhPgMQNd66uh1INF9QlxI6Q==",
-      "type": "package",
-      "path": "microsoft.aspnetcore.components.authorization/8.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "THIRD-PARTY-NOTICES.txt",
-        "lib/net8.0/Microsoft.AspNetCore.Components.Authorization.dll",
-        "lib/net8.0/Microsoft.AspNetCore.Components.Authorization.xml",
-        "microsoft.aspnetcore.components.authorization.8.0.0.nupkg.sha512",
-        "microsoft.aspnetcore.components.authorization.nuspec"
-      ]
-    },
     "Microsoft.AspNetCore.Components.Forms/8.0.10": {
       "sha512": "YOdsdG/da7xc5uA0dRIe8qUz1rVbbptnYA2CrsxPNka3Nv7Sbh3rArlACGWPBkST3qTRollCx4dLEXpwg/6eEw==",
       "type": "package",
@@ -4424,26 +4288,6 @@
         "lib/net8.0/Microsoft.AspNetCore.Components.WebAssembly.xml",
         "microsoft.aspnetcore.components.webassembly.8.0.10.nupkg.sha512",
         "microsoft.aspnetcore.components.webassembly.nuspec"
-      ]
-    },
-    "Microsoft.AspNetCore.Components.WebAssembly.Authentication/8.0.0": {
-      "sha512": "a+AFFp03ksHDZWiWqlqJdYbs5xmnrasdiqBKiMIU19yXBWVrb/hA7ndvp3z6+SJ02v/UAFBIGxTt0R+MfefoOg==",
-      "type": "package",
-      "path": "microsoft.aspnetcore.components.webassembly.authentication/8.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "THIRD-PARTY-NOTICES.txt",
-        "build/Microsoft.AspNetCore.Components.WebAssembly.Authentication.props",
-        "build/Microsoft.AspNetCore.StaticWebAssets.props",
-        "buildMultiTargeting/Microsoft.AspNetCore.Components.WebAssembly.Authentication.props",
-        "buildTransitive/Microsoft.AspNetCore.Components.WebAssembly.Authentication.props",
-        "lib/net8.0/Microsoft.AspNetCore.Components.WebAssembly.Authentication.dll",
-        "lib/net8.0/Microsoft.AspNetCore.Components.WebAssembly.Authentication.xml",
-        "microsoft.aspnetcore.components.webassembly.authentication.8.0.0.nupkg.sha512",
-        "microsoft.aspnetcore.components.webassembly.authentication.nuspec",
-        "staticwebassets/AuthenticationService.js"
       ]
     },
     "Microsoft.AspNetCore.Components.WebAssembly.Server/8.0.10": {
@@ -6822,27 +6666,6 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "MinVer/2.0.0": {
-      "sha512": "1U1JIwD47a/m9S1LXdDm+fByP3LYR9hTeFfi1MlizScXF4e4yUpZvunEyQAovVfi4qYaUlVzIbk08OXFfz3FfQ==",
-      "type": "package",
-      "path": "minver/2.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "build/MinVer.targets",
-        "buildMultiTargeting/MinVer.targets",
-        "minver.2.0.0.nupkg.sha512",
-        "minver.nuspec",
-        "minver.png",
-        "minver/McMaster.Extensions.CommandLineUtils.dll",
-        "minver/MinVer.Lib.dll",
-        "minver/MinVer.Lib.pdb",
-        "minver/MinVer.deps.json",
-        "minver/MinVer.dll",
-        "minver/MinVer.pdb",
-        "minver/MinVer.runtimeconfig.json"
-      ]
-    },
     "Mono.TextTemplating/2.2.1": {
       "sha512": "KZYeKBET/2Z0gY1WlTAK7+RHTl7GSbtvTLDXEZZojUdAPqpQNDL6tHv7VUpqfX5VEOh+uRGKaZXkuD253nEOBQ==",
       "type": "package",
@@ -6956,36 +6779,6 @@
         "lib/netstandard2.0/NuGet.Frameworks.dll",
         "nuget.frameworks.6.5.0.nupkg.sha512",
         "nuget.frameworks.nuspec"
-      ]
-    },
-    "Polly/7.1.0": {
-      "sha512": "mpQsvlEn4ipgICh5CGyVLPV93RFVzOrBG7wPZfzY8gExh7XgWQn0GCDY9nudbUEJ12UiGPP9i4+CohghBvzhmg==",
-      "type": "package",
-      "path": "polly/7.1.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/netstandard1.1/Polly.dll",
-        "lib/netstandard1.1/Polly.xml",
-        "lib/netstandard2.0/Polly.dll",
-        "lib/netstandard2.0/Polly.xml",
-        "polly.7.1.0.nupkg.sha512",
-        "polly.nuspec"
-      ]
-    },
-    "Polly.Extensions.Http/3.0.0": {
-      "sha512": "drrG+hB3pYFY7w1c3BD+lSGYvH2oIclH8GRSehgfyP5kjnFnHKQuuBhuHLv+PWyFuaTDyk/vfRpnxOzd11+J8g==",
-      "type": "package",
-      "path": "polly.extensions.http/3.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/netstandard1.1/Polly.Extensions.Http.dll",
-        "lib/netstandard1.1/Polly.Extensions.Http.xml",
-        "lib/netstandard2.0/Polly.Extensions.Http.dll",
-        "lib/netstandard2.0/Polly.Extensions.Http.xml",
-        "polly.extensions.http.3.0.0.nupkg.sha512",
-        "polly.extensions.http.nuspec"
       ]
     },
     "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
@@ -11847,25 +11640,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.410/PortableRuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1102",
-      "level": "Error",
-      "message": "No se encuentra el paquete ChartJs.Blazor con la versión (>= 2.0.2)\r\n  - Versiones encontradas en nuget.org: 17 [ versión más cercana: 2.0.0-preview1 ]",
-      "libraryId": "ChartJs.Blazor",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    },
-    {
-      "code": "NU1101",
-      "level": "Error",
-      "message": "No se encuentra el paquete Blazor.Analytics. No existe ningún paquete con este id. en los orígenes: nuget.org",
-      "libraryId": "Blazor.Analytics",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    }
-  ]
+  }
 }

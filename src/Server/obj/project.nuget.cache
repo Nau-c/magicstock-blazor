@@ -1,23 +1,20 @@
 {
   "version": 2,
-  "dgSpecHash": "ZOBmko40vsg=",
-  "success": false,
+  "dgSpecHash": "SvCIhuGtks0=",
+  "success": true,
   "projectFilePath": "C:\\Users\\nauze\\Documents\\DEV\\magicstock-blazor\\src\\Server\\MagicStock.Server.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\nauze\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\nauze\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
-    "C:\\Users\\nauze\\.nuget\\packages\\blazoranimate\\3.0.0\\blazoranimate.3.0.0.nupkg.sha512",
     "C:\\Users\\nauze\\.nuget\\packages\\blazored.localstorage\\4.4.0\\blazored.localstorage.4.4.0.nupkg.sha512",
     "C:\\Users\\nauze\\.nuget\\packages\\blazored.toast\\4.1.0\\blazored.toast.4.1.0.nupkg.sha512",
     "C:\\Users\\nauze\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\nauze\\.nuget\\packages\\microsoft.aspnetcore.authorization\\8.0.10\\microsoft.aspnetcore.authorization.8.0.10.nupkg.sha512",
     "C:\\Users\\nauze\\.nuget\\packages\\microsoft.aspnetcore.components\\8.0.10\\microsoft.aspnetcore.components.8.0.10.nupkg.sha512",
     "C:\\Users\\nauze\\.nuget\\packages\\microsoft.aspnetcore.components.analyzers\\8.0.10\\microsoft.aspnetcore.components.analyzers.8.0.10.nupkg.sha512",
-    "C:\\Users\\nauze\\.nuget\\packages\\microsoft.aspnetcore.components.authorization\\8.0.0\\microsoft.aspnetcore.components.authorization.8.0.0.nupkg.sha512",
     "C:\\Users\\nauze\\.nuget\\packages\\microsoft.aspnetcore.components.forms\\8.0.10\\microsoft.aspnetcore.components.forms.8.0.10.nupkg.sha512",
     "C:\\Users\\nauze\\.nuget\\packages\\microsoft.aspnetcore.components.web\\8.0.10\\microsoft.aspnetcore.components.web.8.0.10.nupkg.sha512",
     "C:\\Users\\nauze\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly\\8.0.10\\microsoft.aspnetcore.components.webassembly.8.0.10.nupkg.sha512",
-    "C:\\Users\\nauze\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly.authentication\\8.0.0\\microsoft.aspnetcore.components.webassembly.authentication.8.0.0.nupkg.sha512",
     "C:\\Users\\nauze\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly.server\\8.0.10\\microsoft.aspnetcore.components.webassembly.server.8.0.10.nupkg.sha512",
     "C:\\Users\\nauze\\.nuget\\packages\\microsoft.aspnetcore.metadata\\8.0.10\\microsoft.aspnetcore.metadata.8.0.10.nupkg.sha512",
     "C:\\Users\\nauze\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",
@@ -76,11 +73,8 @@
     "C:\\Users\\nauze\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\nauze\\.nuget\\packages\\microsoft.sqlserver.server\\1.0.0\\microsoft.sqlserver.server.1.0.0.nupkg.sha512",
     "C:\\Users\\nauze\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
-    "C:\\Users\\nauze\\.nuget\\packages\\minver\\2.0.0\\minver.2.0.0.nupkg.sha512",
     "C:\\Users\\nauze\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
     "C:\\Users\\nauze\\.nuget\\packages\\mudblazor\\7.8.0\\mudblazor.7.8.0.nupkg.sha512",
-    "C:\\Users\\nauze\\.nuget\\packages\\polly\\7.1.0\\polly.7.1.0.nupkg.sha512",
-    "C:\\Users\\nauze\\.nuget\\packages\\polly.extensions.http\\3.0.0\\polly.extensions.http.3.0.0.nupkg.sha512",
     "C:\\Users\\nauze\\.nuget\\packages\\serilog\\3.1.1\\serilog.3.1.1.nupkg.sha512",
     "C:\\Users\\nauze\\.nuget\\packages\\serilog.aspnetcore\\8.0.0\\serilog.aspnetcore.8.0.0.nupkg.sha512",
     "C:\\Users\\nauze\\.nuget\\packages\\serilog.extensions.hosting\\8.0.0\\serilog.extensions.hosting.8.0.0.nupkg.sha512",
@@ -131,24 +125,5 @@
     "C:\\Users\\nauze\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "C:\\Users\\nauze\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1102",
-      "level": "Error",
-      "message": "No se encuentra el paquete ChartJs.Blazor con la versión (>= 2.0.2)\r\n  - Versiones encontradas en nuget.org: 17 [ versión más cercana: 2.0.0-preview1 ]",
-      "libraryId": "ChartJs.Blazor",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    },
-    {
-      "code": "NU1101",
-      "level": "Error",
-      "message": "No se encuentra el paquete Blazor.Analytics. No existe ningún paquete con este id. en los orígenes: nuget.org",
-      "libraryId": "Blazor.Analytics",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    }
-  ]
+  "logs": []
 }

@@ -2,26 +2,6 @@
   "version": 3,
   "targets": {
     "net8.0": {
-      "BlazorAnimate/3.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNetCore.Components": "3.1.0",
-          "Microsoft.AspNetCore.Components.Web": "3.1.0",
-          "MinVer": "2.0.0"
-        },
-        "compile": {
-          "lib/netstandard2.0/BlazorAnimate.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/BlazorAnimate.dll": {}
-        },
-        "build": {
-          "buildTransitive/BlazorAnimate.props": {}
-        },
-        "buildMultiTargeting": {
-          "buildMultiTargeting/BlazorAnimate.props": {}
-        }
-      },
       "Blazored.LocalStorage/4.4.0": {
         "type": "package",
         "dependencies": {
@@ -95,23 +75,6 @@
           "buildTransitive/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets": {}
         }
       },
-      "Microsoft.AspNetCore.Components.Authorization/8.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNetCore.Authorization": "8.0.0",
-          "Microsoft.AspNetCore.Components": "8.0.0"
-        },
-        "compile": {
-          "lib/net8.0/Microsoft.AspNetCore.Components.Authorization.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net8.0/Microsoft.AspNetCore.Components.Authorization.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "Microsoft.AspNetCore.Components.Forms/8.0.10": {
         "type": "package",
         "dependencies": {
@@ -172,29 +135,6 @@
           "build/net8.0/Microsoft.AspNetCore.Components.WebAssembly.props": {}
         }
       },
-      "Microsoft.AspNetCore.Components.WebAssembly.Authentication/8.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNetCore.Components.Authorization": "8.0.0",
-          "Microsoft.AspNetCore.Components.Web": "8.0.0"
-        },
-        "compile": {
-          "lib/net8.0/Microsoft.AspNetCore.Components.WebAssembly.Authentication.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net8.0/Microsoft.AspNetCore.Components.WebAssembly.Authentication.dll": {
-            "related": ".xml"
-          }
-        },
-        "build": {
-          "buildTransitive/Microsoft.AspNetCore.Components.WebAssembly.Authentication.props": {}
-        },
-        "buildMultiTargeting": {
-          "buildMultiTargeting/Microsoft.AspNetCore.Components.WebAssembly.Authentication.props": {}
-        }
-      },
       "Microsoft.AspNetCore.Components.WebAssembly.DevServer/8.0.10": {
         "type": "package",
         "build": {
@@ -233,13 +173,13 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
-      "Microsoft.Extensions.Caching.Memory/8.0.0": {
+      "Microsoft.Extensions.Caching.Memory/8.0.1": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Caching.Abstractions": "8.0.0",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0",
-          "Microsoft.Extensions.Logging.Abstractions": "8.0.0",
-          "Microsoft.Extensions.Options": "8.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.2",
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.2",
+          "Microsoft.Extensions.Options": "8.0.2",
           "Microsoft.Extensions.Primitives": "8.0.0"
         },
         "compile": {
@@ -547,12 +487,12 @@
           }
         }
       },
-      "Microsoft.Extensions.Logging/8.0.0": {
+      "Microsoft.Extensions.Logging/8.0.1": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection": "8.0.0",
-          "Microsoft.Extensions.Logging.Abstractions": "8.0.0",
-          "Microsoft.Extensions.Options": "8.0.0"
+          "Microsoft.Extensions.DependencyInjection": "8.0.1",
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.2",
+          "Microsoft.Extensions.Options": "8.0.2"
         },
         "compile": {
           "lib/net8.0/Microsoft.Extensions.Logging.dll": {
@@ -688,15 +628,6 @@
           "build/Microsoft.NET.Sdk.WebAssembly.Pack.targets": {}
         }
       },
-      "MinVer/2.0.0": {
-        "type": "package",
-        "build": {
-          "build/_._": {}
-        },
-        "buildMultiTargeting": {
-          "buildMultiTargeting/_._": {}
-        }
-      },
       "MudBlazor/7.8.0": {
         "type": "package",
         "dependencies": {
@@ -720,35 +651,6 @@
         },
         "buildMultiTargeting": {
           "buildMultiTargeting/MudBlazor.props": {}
-        }
-      },
-      "Polly/7.1.0": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard2.0/Polly.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/netstandard2.0/Polly.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "Polly.Extensions.Http/3.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Polly": "7.1.0"
-        },
-        "compile": {
-          "lib/netstandard2.0/Polly.Extensions.Http.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/netstandard2.0/Polly.Extensions.Http.dll": {
-            "related": ".xml"
-          }
         }
       },
       "System.ComponentModel.Annotations/5.0.0": {
@@ -828,26 +730,6 @@
       }
     },
     "net8.0/browser-wasm": {
-      "BlazorAnimate/3.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNetCore.Components": "3.1.0",
-          "Microsoft.AspNetCore.Components.Web": "3.1.0",
-          "MinVer": "2.0.0"
-        },
-        "compile": {
-          "lib/netstandard2.0/BlazorAnimate.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/BlazorAnimate.dll": {}
-        },
-        "build": {
-          "buildTransitive/BlazorAnimate.props": {}
-        },
-        "buildMultiTargeting": {
-          "buildMultiTargeting/BlazorAnimate.props": {}
-        }
-      },
       "Blazored.LocalStorage/4.4.0": {
         "type": "package",
         "dependencies": {
@@ -921,23 +803,6 @@
           "buildTransitive/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets": {}
         }
       },
-      "Microsoft.AspNetCore.Components.Authorization/8.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNetCore.Authorization": "8.0.0",
-          "Microsoft.AspNetCore.Components": "8.0.0"
-        },
-        "compile": {
-          "lib/net8.0/Microsoft.AspNetCore.Components.Authorization.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net8.0/Microsoft.AspNetCore.Components.Authorization.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "Microsoft.AspNetCore.Components.Forms/8.0.10": {
         "type": "package",
         "dependencies": {
@@ -998,29 +863,6 @@
           "build/net8.0/Microsoft.AspNetCore.Components.WebAssembly.props": {}
         }
       },
-      "Microsoft.AspNetCore.Components.WebAssembly.Authentication/8.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNetCore.Components.Authorization": "8.0.0",
-          "Microsoft.AspNetCore.Components.Web": "8.0.0"
-        },
-        "compile": {
-          "lib/net8.0/Microsoft.AspNetCore.Components.WebAssembly.Authentication.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net8.0/Microsoft.AspNetCore.Components.WebAssembly.Authentication.dll": {
-            "related": ".xml"
-          }
-        },
-        "build": {
-          "buildTransitive/Microsoft.AspNetCore.Components.WebAssembly.Authentication.props": {}
-        },
-        "buildMultiTargeting": {
-          "buildMultiTargeting/Microsoft.AspNetCore.Components.WebAssembly.Authentication.props": {}
-        }
-      },
       "Microsoft.AspNetCore.Components.WebAssembly.DevServer/8.0.10": {
         "type": "package",
         "build": {
@@ -1059,13 +901,13 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
-      "Microsoft.Extensions.Caching.Memory/8.0.0": {
+      "Microsoft.Extensions.Caching.Memory/8.0.1": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Caching.Abstractions": "8.0.0",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0",
-          "Microsoft.Extensions.Logging.Abstractions": "8.0.0",
-          "Microsoft.Extensions.Options": "8.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.2",
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.2",
+          "Microsoft.Extensions.Options": "8.0.2",
           "Microsoft.Extensions.Primitives": "8.0.0"
         },
         "compile": {
@@ -1373,12 +1215,12 @@
           }
         }
       },
-      "Microsoft.Extensions.Logging/8.0.0": {
+      "Microsoft.Extensions.Logging/8.0.1": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection": "8.0.0",
-          "Microsoft.Extensions.Logging.Abstractions": "8.0.0",
-          "Microsoft.Extensions.Options": "8.0.0"
+          "Microsoft.Extensions.DependencyInjection": "8.0.1",
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.2",
+          "Microsoft.Extensions.Options": "8.0.2"
         },
         "compile": {
           "lib/net8.0/Microsoft.Extensions.Logging.dll": {
@@ -1514,15 +1356,6 @@
           "build/Microsoft.NET.Sdk.WebAssembly.Pack.targets": {}
         }
       },
-      "MinVer/2.0.0": {
-        "type": "package",
-        "build": {
-          "build/_._": {}
-        },
-        "buildMultiTargeting": {
-          "buildMultiTargeting/_._": {}
-        }
-      },
       "MudBlazor/7.8.0": {
         "type": "package",
         "dependencies": {
@@ -1546,35 +1379,6 @@
         },
         "buildMultiTargeting": {
           "buildMultiTargeting/MudBlazor.props": {}
-        }
-      },
-      "Polly/7.1.0": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard2.0/Polly.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/netstandard2.0/Polly.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "Polly.Extensions.Http/3.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Polly": "7.1.0"
-        },
-        "compile": {
-          "lib/netstandard2.0/Polly.Extensions.Http.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/netstandard2.0/Polly.Extensions.Http.dll": {
-            "related": ".xml"
-          }
         }
       },
       "System.ComponentModel.Annotations/5.0.0": {
@@ -1655,24 +1459,6 @@
     }
   },
   "libraries": {
-    "BlazorAnimate/3.0.0": {
-      "sha512": "IUX/IFdEKiQ5ncZ5/iVhaZynWL2dA04lH9ieza9JhBj/jJH8f2NwM6OqdJFm7RfkFdbkIH8t2Bxd/laZS2EXWQ==",
-      "type": "package",
-      "path": "blazoranimate/3.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "blazoranimate.3.0.0.nupkg.sha512",
-        "blazoranimate.nuspec",
-        "build/BlazorAnimate.props",
-        "build/Microsoft.AspNetCore.StaticWebAssets.props",
-        "buildMultiTargeting/BlazorAnimate.props",
-        "buildTransitive/BlazorAnimate.props",
-        "lib/netstandard2.0/BlazorAnimate.dll",
-        "staticwebassets/aos.css",
-        "staticwebassets/blazorAnimateInterop.js"
-      ]
-    },
     "Blazored.LocalStorage/4.4.0": {
       "sha512": "zuXZB4/WW3Pr1761peemffdkjt09lbOP1wAkSDTKl7BTbA9V5e8LxS6MNfmyHW+BJzXrNDq90E2Y+AfIfnIbWQ==",
       "type": "package",
@@ -1756,21 +1542,6 @@
         "microsoft.aspnetcore.components.analyzers.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.Components.Authorization/8.0.0": {
-      "sha512": "GlaNfvmRQAmXMrNlJcQJcB/K8ptShc121sQdqc82Yigd6d7lMVbMKI/P+rNr1ReEhPgMQNd66uh1INF9QlxI6Q==",
-      "type": "package",
-      "path": "microsoft.aspnetcore.components.authorization/8.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "THIRD-PARTY-NOTICES.txt",
-        "lib/net8.0/Microsoft.AspNetCore.Components.Authorization.dll",
-        "lib/net8.0/Microsoft.AspNetCore.Components.Authorization.xml",
-        "microsoft.aspnetcore.components.authorization.8.0.0.nupkg.sha512",
-        "microsoft.aspnetcore.components.authorization.nuspec"
-      ]
-    },
     "Microsoft.AspNetCore.Components.Forms/8.0.10": {
       "sha512": "YOdsdG/da7xc5uA0dRIe8qUz1rVbbptnYA2CrsxPNka3Nv7Sbh3rArlACGWPBkST3qTRollCx4dLEXpwg/6eEw==",
       "type": "package",
@@ -1816,26 +1587,6 @@
         "lib/net8.0/Microsoft.AspNetCore.Components.WebAssembly.xml",
         "microsoft.aspnetcore.components.webassembly.8.0.10.nupkg.sha512",
         "microsoft.aspnetcore.components.webassembly.nuspec"
-      ]
-    },
-    "Microsoft.AspNetCore.Components.WebAssembly.Authentication/8.0.0": {
-      "sha512": "a+AFFp03ksHDZWiWqlqJdYbs5xmnrasdiqBKiMIU19yXBWVrb/hA7ndvp3z6+SJ02v/UAFBIGxTt0R+MfefoOg==",
-      "type": "package",
-      "path": "microsoft.aspnetcore.components.webassembly.authentication/8.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "THIRD-PARTY-NOTICES.txt",
-        "build/Microsoft.AspNetCore.Components.WebAssembly.Authentication.props",
-        "build/Microsoft.AspNetCore.StaticWebAssets.props",
-        "buildMultiTargeting/Microsoft.AspNetCore.Components.WebAssembly.Authentication.props",
-        "buildTransitive/Microsoft.AspNetCore.Components.WebAssembly.Authentication.props",
-        "lib/net8.0/Microsoft.AspNetCore.Components.WebAssembly.Authentication.dll",
-        "lib/net8.0/Microsoft.AspNetCore.Components.WebAssembly.Authentication.xml",
-        "microsoft.aspnetcore.components.webassembly.authentication.8.0.0.nupkg.sha512",
-        "microsoft.aspnetcore.components.webassembly.authentication.nuspec",
-        "staticwebassets/AuthenticationService.js"
       ]
     },
     "Microsoft.AspNetCore.Components.WebAssembly.DevServer/8.0.10": {
@@ -2054,10 +1805,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.Caching.Memory/8.0.0": {
-      "sha512": "7pqivmrZDzo1ADPkRwjy+8jtRKWRCPag9qPI+p7sgu7Q4QreWhcvbiWXsbhP+yY8XSiDvZpu2/LWdBv7PnmOpQ==",
+    "Microsoft.Extensions.Caching.Memory/8.0.1": {
+      "sha512": "HFDnhYLccngrzyGgHkjEDU5FMLn4MpOsr5ElgsBMC4yx6lJh4jeWO7fHS8+TXPq+dgxCmUa/Trl8svObmwW4QA==",
       "type": "package",
-      "path": "microsoft.extensions.caching.memory/8.0.0",
+      "path": "microsoft.extensions.caching.memory/8.0.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2079,7 +1830,7 @@
         "lib/net8.0/Microsoft.Extensions.Caching.Memory.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Caching.Memory.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Caching.Memory.xml",
-        "microsoft.extensions.caching.memory.8.0.0.nupkg.sha512",
+        "microsoft.extensions.caching.memory.8.0.1.nupkg.sha512",
         "microsoft.extensions.caching.memory.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -2525,10 +2276,10 @@
         "microsoft.extensions.localization.abstractions.nuspec"
       ]
     },
-    "Microsoft.Extensions.Logging/8.0.0": {
-      "sha512": "tvRkov9tAJ3xP51LCv3FJ2zINmv1P8Hi8lhhtcKGqM+ImiTCC84uOPEI4z8Cdq2C3o9e+Aa0Gw0rmrsJD77W+w==",
+    "Microsoft.Extensions.Logging/8.0.1": {
+      "sha512": "4x+pzsQEbqxhNf1QYRr5TDkLP9UsLT3A6MdRKDDEgrW7h1ljiEPgTNhKYUhNCCAaVpQECVQ+onA91PTPnIp6Lw==",
       "type": "package",
-      "path": "microsoft.extensions.logging/8.0.0",
+      "path": "microsoft.extensions.logging/8.0.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2552,7 +2303,7 @@
         "lib/netstandard2.0/Microsoft.Extensions.Logging.xml",
         "lib/netstandard2.1/Microsoft.Extensions.Logging.dll",
         "lib/netstandard2.1/Microsoft.Extensions.Logging.xml",
-        "microsoft.extensions.logging.8.0.0.nupkg.sha512",
+        "microsoft.extensions.logging.8.0.1.nupkg.sha512",
         "microsoft.extensions.logging.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -2857,27 +2608,6 @@
         "tools/net8.0/Microsoft.NET.WebAssembly.Webcil.dll"
       ]
     },
-    "MinVer/2.0.0": {
-      "sha512": "1U1JIwD47a/m9S1LXdDm+fByP3LYR9hTeFfi1MlizScXF4e4yUpZvunEyQAovVfi4qYaUlVzIbk08OXFfz3FfQ==",
-      "type": "package",
-      "path": "minver/2.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "build/MinVer.targets",
-        "buildMultiTargeting/MinVer.targets",
-        "minver.2.0.0.nupkg.sha512",
-        "minver.nuspec",
-        "minver.png",
-        "minver/McMaster.Extensions.CommandLineUtils.dll",
-        "minver/MinVer.Lib.dll",
-        "minver/MinVer.Lib.pdb",
-        "minver/MinVer.deps.json",
-        "minver/MinVer.dll",
-        "minver/MinVer.pdb",
-        "minver/MinVer.runtimeconfig.json"
-      ]
-    },
     "MudBlazor/7.8.0": {
       "sha512": "DivLaZKVkL4z8jVeqa1P2n3u5Dny8l/K1nCLrzp8hI+efdE2Rd1KDkMqoaGdjgV9jCEJ3D35r1+/w6V4yPzuaw==",
       "type": "package",
@@ -2902,36 +2632,6 @@
         "mudblazor.nuspec",
         "staticwebassets/MudBlazor.min.css",
         "staticwebassets/MudBlazor.min.js"
-      ]
-    },
-    "Polly/7.1.0": {
-      "sha512": "mpQsvlEn4ipgICh5CGyVLPV93RFVzOrBG7wPZfzY8gExh7XgWQn0GCDY9nudbUEJ12UiGPP9i4+CohghBvzhmg==",
-      "type": "package",
-      "path": "polly/7.1.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/netstandard1.1/Polly.dll",
-        "lib/netstandard1.1/Polly.xml",
-        "lib/netstandard2.0/Polly.dll",
-        "lib/netstandard2.0/Polly.xml",
-        "polly.7.1.0.nupkg.sha512",
-        "polly.nuspec"
-      ]
-    },
-    "Polly.Extensions.Http/3.0.0": {
-      "sha512": "drrG+hB3pYFY7w1c3BD+lSGYvH2oIclH8GRSehgfyP5kjnFnHKQuuBhuHLv+PWyFuaTDyk/vfRpnxOzd11+J8g==",
-      "type": "package",
-      "path": "polly.extensions.http/3.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/netstandard1.1/Polly.Extensions.Http.dll",
-        "lib/netstandard1.1/Polly.Extensions.Http.xml",
-        "lib/netstandard2.0/Polly.Extensions.Http.dll",
-        "lib/netstandard2.0/Polly.Extensions.Http.xml",
-        "polly.extensions.http.3.0.0.nupkg.sha512",
-        "polly.extensions.http.nuspec"
       ]
     },
     "System.ComponentModel.Annotations/5.0.0": {
@@ -3164,22 +2864,17 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "Blazor.Analytics >= 3.10.0",
-      "BlazorAnimate >= 3.0.0",
       "Blazored.LocalStorage >= 4.4.0",
       "Blazored.Toast >= 4.1.0",
-      "ChartJs.Blazor >= 2.0.2",
       "MagicStock.Shared >= 1.0.0",
       "Microsoft.AspNetCore.Components.WebAssembly >= 8.0.10",
-      "Microsoft.AspNetCore.Components.WebAssembly.Authentication >= 8.0.0",
       "Microsoft.AspNetCore.Components.WebAssembly.DevServer >= 8.0.10",
-      "Microsoft.Extensions.Caching.Memory >= 8.0.0",
+      "Microsoft.Extensions.Caching.Memory >= 8.0.1",
       "Microsoft.Extensions.Http >= 8.0.1",
-      "Microsoft.Extensions.Logging >= 8.0.0",
+      "Microsoft.Extensions.Logging >= 8.0.1",
       "Microsoft.NET.ILLink.Tasks >= 8.0.16",
       "Microsoft.NET.Sdk.WebAssembly.Pack >= 8.0.16",
       "MudBlazor >= 7.8.0",
-      "Polly.Extensions.Http >= 3.0.0",
       "System.Net.Http.Json >= 8.0.1"
     ]
   },
@@ -3215,7 +2910,6 @@
         }
       },
       "warningProperties": {
-        "allWarningsAsErrors": true,
         "warnAsError": [
           "NU1605"
         ]
@@ -3230,14 +2924,6 @@
       "net8.0": {
         "targetAlias": "net8.0",
         "dependencies": {
-          "Blazor.Analytics": {
-            "target": "Package",
-            "version": "[3.10.0, )"
-          },
-          "BlazorAnimate": {
-            "target": "Package",
-            "version": "[3.0.0, )"
-          },
           "Blazored.LocalStorage": {
             "target": "Package",
             "version": "[4.4.0, )"
@@ -3246,17 +2932,9 @@
             "target": "Package",
             "version": "[4.1.0, )"
           },
-          "ChartJs.Blazor": {
-            "target": "Package",
-            "version": "[2.0.2, )"
-          },
           "Microsoft.AspNetCore.Components.WebAssembly": {
             "target": "Package",
             "version": "[8.0.10, )"
-          },
-          "Microsoft.AspNetCore.Components.WebAssembly.Authentication": {
-            "target": "Package",
-            "version": "[8.0.0, )"
           },
           "Microsoft.AspNetCore.Components.WebAssembly.DevServer": {
             "suppressParent": "All",
@@ -3265,7 +2943,7 @@
           },
           "Microsoft.Extensions.Caching.Memory": {
             "target": "Package",
-            "version": "[8.0.0, )"
+            "version": "[8.0.1, )"
           },
           "Microsoft.Extensions.Http": {
             "target": "Package",
@@ -3273,7 +2951,7 @@
           },
           "Microsoft.Extensions.Logging": {
             "target": "Package",
-            "version": "[8.0.0, )"
+            "version": "[8.0.1, )"
           },
           "Microsoft.NET.ILLink.Tasks": {
             "suppressParent": "All",
@@ -3290,10 +2968,6 @@
           "MudBlazor": {
             "target": "Package",
             "version": "[7.8.0, )"
-          },
-          "Polly.Extensions.Http": {
-            "target": "Package",
-            "version": "[3.0.0, )"
           },
           "System.Net.Http.Json": {
             "target": "Package",
@@ -3330,57 +3004,5 @@
         "#import": []
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1102",
-      "level": "Error",
-      "message": "No se encuentra el paquete ChartJs.Blazor con la versión (>= 2.0.2)\r\n  - Versiones encontradas en nuget.org: 17 [ versión más cercana: 2.0.0-preview1 ]",
-      "libraryId": "ChartJs.Blazor",
-      "targetGraphs": [
-        "net8.0",
-        "net8.0/browser-wasm"
-      ]
-    },
-    {
-      "code": "NU1101",
-      "level": "Error",
-      "message": "No se encuentra el paquete Blazor.Analytics. No existe ningún paquete con este id. en los orígenes: nuget.org",
-      "libraryId": "Blazor.Analytics",
-      "targetGraphs": [
-        "net8.0",
-        "net8.0/browser-wasm"
-      ]
-    },
-    {
-      "code": "NU1903",
-      "level": "Error",
-      "message": "Advertencia como error: El paquete \"Microsoft.Extensions.Caching.Memory\" 8.0.0 tiene una vulnerabilidad de gravedad alta conocida, https://github.com/advisories/GHSA-qj66-m88j-hmgj",
-      "libraryId": "Microsoft.Extensions.Caching.Memory",
-      "targetGraphs": [
-        "net8.0",
-        "net8.0/browser-wasm"
-      ]
-    },
-    {
-      "code": "NU1605",
-      "level": "Error",
-      "message": "Advertencia como error: Degradación del paquete detectada: Microsoft.Extensions.Logging de 8.0.1 a 8.0.0. Haga referencia al paquete directamente desde el proyecto para seleccionar una versión diferente. \r\n MagicStock.Client -> Microsoft.AspNetCore.Components.WebAssembly 8.0.10 -> Microsoft.Extensions.Logging (>= 8.0.1) \r\n MagicStock.Client -> Microsoft.Extensions.Logging (>= 8.0.0)",
-      "libraryId": "Microsoft.Extensions.Logging",
-      "targetGraphs": [
-        "net8.0",
-        "net8.0/browser-wasm"
-      ]
-    },
-    {
-      "code": "NU1605",
-      "level": "Error",
-      "message": "Advertencia como error: Degradación del paquete detectada: Microsoft.Extensions.Logging de 8.0.1 a 8.0.0. Haga referencia al paquete directamente desde el proyecto para seleccionar una versión diferente. \r\n MagicStock.Client -> Microsoft.Extensions.Http 8.0.1 -> Microsoft.Extensions.Logging (>= 8.0.1) \r\n MagicStock.Client -> Microsoft.Extensions.Logging (>= 8.0.0)",
-      "libraryId": "Microsoft.Extensions.Logging",
-      "targetGraphs": [
-        "net8.0",
-        "net8.0/browser-wasm"
-      ]
-    }
-  ]
+  }
 }
