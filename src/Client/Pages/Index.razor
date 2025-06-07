@@ -1,0 +1,164 @@
+@page "/"
+@using MudBlazor
+
+<PageTitle>🏠 Inicio - MagicStock</PageTitle>
+
+<div class="home-container">
+    <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="pa-6">
+        <!-- Hero Section -->
+        <section class="hero-section mb-8">
+            <MudText Typo="Typo.h2" Align="Align.Center" GutterBottom="true" Class="hero-title">
+                ✨ Bienvenido a <span class="gradient-text">MagicStock</span>
+            </MudText>
+            <MudText Typo="Typo.h5" Align="Align.Center" Color="Color.Secondary" Class="mb-6">
+                La plataforma profesional para gestionar tu colección de cartas Magic: The Gathering
+            </MudText>
+            
+            <div class="hero-actions">
+                <MudButton Variant="Variant.Filled" 
+                          Color="Color.Primary" 
+                          Size="Size.Large"
+                          StartIcon="Icons.Material.Filled.Dashboard"
+                          Href="/dashboard"
+                          Class="mx-2">
+                    Ver Dashboard
+                </MudButton>
+                <MudButton Variant="Variant.Outlined" 
+                          Color="Color.Primary" 
+                          Size="Size.Large"
+                          StartIcon="Icons.Material.Filled.Add"
+                          Class="mx-2">
+                    Añadir Cartas
+                </MudButton>
+            </div>
+        </section>
+
+        <!-- Quick Stats -->
+        <section class="quick-stats mb-8">
+            <MudGrid>
+                <MudItem xs="12" sm="6" md="3">
+                    <MudPaper Class="pa-4" Elevation="2">
+                        <div class="d-flex align-center">
+                            <MudIcon Icon="Icons.Material.Filled.Style" Class="mr-3" Color="Color.Primary" Style="font-size: 3rem;" />
+                            <div>
+                                <MudText Typo="Typo.h4">1,234</MudText>
+                                <MudText Typo="Typo.subtitle2" Color="Color.Secondary">Cartas en Stock</MudText>
+                            </div>
+                        </div>
+                    </MudPaper>
+                </MudItem>
+                
+                <MudItem xs="12" sm="6" md="3">
+                    <MudPaper Class="pa-4" Elevation="2">
+                        <div class="d-flex align-center">
+                            <MudIcon Icon="Icons.Material.Filled.AttachMoney" Class="mr-3" Color="Color.Success" Style="font-size: 3rem;" />
+                            <div>
+                                <MudText Typo="Typo.h4">$2,457</MudText>
+                                <MudText Typo="Typo.subtitle2" Color="Color.Secondary">Valor Total</MudText>
+                            </div>
+                        </div>
+                    </MudPaper>
+                </MudItem>
+                
+                <MudItem xs="12" sm="6" md="3">
+                    <MudPaper Class="pa-4" Elevation="2">
+                        <div class="d-flex align-center">
+                            <MudIcon Icon="Icons.Material.Filled.TrendingUp" Class="mr-3" Color="Color.Warning" Style="font-size: 3rem;" />
+                            <div>
+                                <MudText Typo="Typo.h4">+12%</MudText>
+                                <MudText Typo="Typo.subtitle2" Color="Color.Secondary">Crecimiento</MudText>
+                            </div>
+                        </div>
+                    </MudPaper>
+                </MudItem>
+                
+                <MudItem xs="12" sm="6" md="3">
+                    <MudPaper Class="pa-4" Elevation="2">
+                        <div class="d-flex align-center">
+                            <MudIcon Icon="Icons.Material.Filled.Diamond" Class="mr-3" Color="Color.Secondary" Style="font-size: 3rem;" />
+                            <div>
+                                <MudText Typo="Typo.h4">47</MudText>
+                                <MudText Typo="Typo.subtitle2" Color="Color.Secondary">Cartas Raras</MudText>
+                            </div>
+                        </div>
+                    </MudPaper>
+                </MudItem>
+            </MudGrid>
+        </section>
+
+        <!-- Quick Actions -->
+        <section class="quick-actions">
+            <MudText Typo="Typo.h4" Align="Align.Center" GutterBottom="true" Class="mb-6">
+                🚀 Acciones Rápidas
+            </MudText>
+            
+            <MudGrid>
+                <MudItem xs="12" md="6">
+                    <MudCard Elevation="2" Class="pa-4">
+                        <div class="d-flex flex-column align-center pa-4">
+                            <MudIcon Icon="Icons.Material.Filled.Search" Style="font-size: 4rem;" Color="Color.Primary" Class="mb-4" />
+                            <MudText Typo="Typo.h6" Class="mb-2">Buscar Cartas</MudText>
+                            <MudText Typo="Typo.body2" Color="Color.Secondary" Align="Align.Center" Class="mb-4">
+                                Explora la base de datos completa de Magic con filtros avanzados
+                            </MudText>
+                            <MudButton Variant="Variant.Text" Color="Color.Primary" StartIcon="Icons.Material.Filled.ArrowForward">
+                                Explorar
+                            </MudButton>
+                        </div>
+                    </MudCard>
+                </MudItem>
+                
+                <MudItem xs="12" md="6">
+                    <MudCard Elevation="2" Class="pa-4">
+                        <div class="d-flex flex-column align-center pa-4">
+                            <MudIcon Icon="Icons.Material.Filled.Dashboard" Style="font-size: 4rem;" Color="Color.Primary" Class="mb-4" />
+                            <MudText Typo="Typo.h6" Class="mb-2">Ver Dashboard</MudText>
+                            <MudText Typo="Typo.body2" Color="Color.Secondary" Align="Align.Center" Class="mb-4">
+                                Analiza tu colección con gráficos y métricas detalladas
+                            </MudText>
+                            <MudButton Variant="Variant.Text" Color="Color.Primary" StartIcon="Icons.Material.Filled.ArrowForward" Href="/dashboard">
+                                Analizar
+                            </MudButton>
+                        </div>
+                    </MudCard>
+                </MudItem>
+            </MudGrid>
+        </section>
+    </MudContainer>
+</div>
+
+<style>
+    .home-container {
+        min-height: 80vh;
+    }
+
+    .hero-section {
+        text-align: center;
+        padding: 40px 0;
+    }
+
+    .hero-title {
+        font-weight: 700;
+    }
+
+    .gradient-text {
+        background: linear-gradient(45deg, var(--mud-palette-primary), var(--mud-palette-secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .hero-actions {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+
+    @media (max-width: 600px) {
+        .hero-actions {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+</style> 

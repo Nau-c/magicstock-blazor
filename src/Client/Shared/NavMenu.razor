@@ -1,0 +1,347 @@
+@using MudBlazor
+
+<MudNavMenu Class="nav-menu">
+    <!-- Navegación Principal -->
+    <MudNavGroup Text="🏠 Principal" 
+                Icon="Icons.Material.Filled.Home" 
+                Expanded="true"
+                ExpandIcon="Icons.Material.Filled.ExpandMore">
+        
+        <MudNavLink Href="/" 
+                   Match="NavLinkMatch.All" 
+                   Icon="Icons.Material.Filled.Dashboard">
+            Dashboard
+        </MudNavLink>
+        
+        <MudNavLink Href="/cards" 
+                   Icon="Icons.Material.Filled.Style">
+            Explorar Cartas
+        </MudNavLink>
+        
+        <MudNavLink Href="/stock" 
+                   Icon="Icons.Material.Filled.Inventory">
+            Mi Stock
+            <MudChip Size="Size.Small" 
+                    Color="Color.Success" 
+                    Class="ml-auto">
+                245
+            </MudChip>
+        </MudNavLink>
+    </MudNavGroup>
+
+    <!-- Gestión -->
+    <MudNavGroup Text="📊 Gestión" 
+                Icon="Icons.Material.Filled.Analytics" 
+                Expanded="false">
+        
+        <MudNavLink Href="/dashboard" 
+                   Icon="Icons.Material.Filled.BarChart">
+            Estadísticas
+        </MudNavLink>
+        
+        <MudNavLink Href="/reports" 
+                   Icon="Icons.Material.Filled.Assessment">
+            Reportes
+        </MudNavLink>
+        
+        <MudNavLink Href="/trends" 
+                   Icon="Icons.Material.Filled.TrendingUp">
+            Tendencias
+        </MudNavLink>
+        
+        <MudNavLink Href="/alerts" 
+                   Icon="Icons.Material.Filled.NotificationsActive">
+            Alertas de Precio
+            <MudBadge Content="3" 
+                     Color="Color.Error" 
+                     Overlap="true" 
+                     Class="ml-auto">
+            </MudBadge>
+        </MudNavLink>
+    </MudNavGroup>
+
+    <!-- Herramientas -->
+    <MudNavGroup Text="🔧 Herramientas" 
+                Icon="Icons.Material.Filled.Build" 
+                Expanded="false">
+        
+        <MudNavLink Href="/search" 
+                   Icon="Icons.Material.Filled.Search">
+            Búsqueda Avanzada
+        </MudNavLink>
+        
+        <MudNavLink Href="/import" 
+                   Icon="Icons.Material.Filled.CloudUpload">
+            Importar/Exportar
+        </MudNavLink>
+        
+        <MudNavLink Href="/scanner" 
+                   Icon="Icons.Material.Filled.QrCodeScanner">
+            Escáner de Cartas
+        </MudNavLink>
+        
+        <MudNavLink Href="/wishlist" 
+                   Icon="Icons.Material.Filled.FavoriteBorder">
+            Lista de Deseos
+        </MudNavLink>
+    </MudNavGroup>
+
+    <!-- Comunidad v2.0 Preview -->
+    <MudNavGroup Text="👥 Comunidad" 
+                Icon="Icons.Material.Filled.People" 
+                Expanded="false"
+                Class="community-section">
+        
+        <MudNavLink Href="/marketplace" 
+                   Icon="Icons.Material.Filled.Store"
+                   Class="coming-soon">
+            Marketplace
+            <MudChip Size="Size.Small" 
+                    Color="Color.Info" 
+                    Variant="Variant.Outlined"
+                    Class="ml-auto">
+                v2.0
+            </MudChip>
+        </MudNavLink>
+        
+        <MudNavLink Href="/trades" 
+                   Icon="Icons.Material.Filled.SwapHoriz"
+                   Class="coming-soon">
+            Intercambios
+            <MudChip Size="Size.Small" 
+                    Color="Color.Info" 
+                    Variant="Variant.Outlined"
+                    Class="ml-auto">
+                v2.0
+            </MudChip>
+        </MudNavLink>
+        
+        <MudNavLink Href="/social" 
+                   Icon="Icons.Material.Filled.Share"
+                   Class="coming-soon">
+            Compartir Colección
+            <MudChip Size="Size.Small" 
+                    Color="Color.Info" 
+                    Variant="Variant.Outlined"
+                    Class="ml-auto">
+                v2.0
+            </MudChip>
+        </MudNavLink>
+    </MudNavGroup>
+
+    <MudDivider Class="my-4" />
+
+    <!-- Configuración -->
+    <MudNavGroup Text="⚙️ Configuración" 
+                Icon="Icons.Material.Filled.Settings" 
+                Expanded="false">
+        
+        <MudNavLink Href="/settings" 
+                   Icon="Icons.Material.Filled.Tune">
+            Preferencias
+        </MudNavLink>
+        
+        <MudNavLink Href="/profile" 
+                   Icon="Icons.Material.Filled.Person">
+            Mi Perfil
+        </MudNavLink>
+        
+        <MudNavLink Href="/backup" 
+                   Icon="Icons.Material.Filled.Backup">
+            Respaldo
+        </MudNavLink>
+    </MudNavGroup>
+
+    <!-- Información -->
+    <MudNavGroup Text="ℹ️ Información" 
+                Icon="Icons.Material.Filled.Info" 
+                Expanded="false">
+        
+        <MudNavLink Href="/help" 
+                   Icon="Icons.Material.Filled.Help">
+            Ayuda
+        </MudNavLink>
+        
+        <MudNavLink Href="/about" 
+                   Icon="Icons.Material.Filled.InfoOutlined">
+            Acerca de
+        </MudNavLink>
+        
+        <MudNavLink Href="/changelog" 
+                   Icon="Icons.Material.Filled.NewReleases">
+            Novedades
+            <MudChip Size="Size.Small" 
+                    Color="Color.Success" 
+                    Class="ml-auto">
+                v1.1
+            </MudChip>
+        </MudNavLink>
+    </MudNavGroup>
+</MudNavMenu>
+
+<!-- Estado de conexión -->
+<div class="connection-status">
+    <MudChip Icon="@connectionIcon" 
+            Color="@connectionColor" 
+            Size="Size.Small"
+            Variant="Variant.Filled">
+        @connectionText
+    </MudChip>
+</div>
+
+<!-- Información del stock -->
+<div class="stock-summary">
+    <MudPaper Class="pa-3" Elevation="1">
+        <MudText Typo="Typo.subtitle2" Class="mb-2">📈 Resumen Rápido</MudText>
+        
+        <div class="summary-item">
+            <MudText Typo="Typo.caption">Valor Total:</MudText>
+            <MudText Typo="Typo.body2" Class="fw-bold">$2,457.89</MudText>
+        </div>
+        
+        <div class="summary-item">
+            <MudText Typo="Typo.caption">Cartas:</MudText>
+            <MudText Typo="Typo.body2" Class="fw-bold">1,234</MudText>
+        </div>
+        
+        <div class="summary-item">
+            <MudText Typo="Typo.caption">Última Sync:</MudText>
+            <MudText Typo="Typo.body2" Class="fw-bold">@lastSync</MudText>
+        </div>
+        
+        <MudButton Variant="Variant.Text" 
+                  Size="Size.Small" 
+                  FullWidth="true"
+                  StartIcon="Icons.Material.Filled.Refresh"
+                  OnClick="@RefreshData"
+                  Class="mt-2">
+            Sincronizar
+        </MudButton>
+    </MudPaper>
+</div>
+
+<style>
+    .nav-menu {
+        padding: 0;
+    }
+
+    .mud-nav-group {
+        margin-bottom: 8px;
+    }
+
+    .mud-nav-link {
+        border-radius: 8px;
+        margin: 2px 8px;
+        transition: all 0.3s ease;
+    }
+
+    .mud-nav-link:hover {
+        transform: translateX(4px);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .coming-soon {
+        opacity: 0.7;
+        position: relative;
+    }
+
+    .coming-soon::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        pointer-events: none;
+    }
+
+    .community-section {
+        background: linear-gradient(90deg, transparent, rgba(var(--mud-palette-info-rgb), 0.05), transparent);
+        border-radius: 8px;
+        margin: 8px 4px;
+    }
+
+    .connection-status {
+        position: fixed;
+        bottom: 80px;
+        left: 16px;
+        z-index: 100;
+    }
+
+    .stock-summary {
+        position: fixed;
+        bottom: 16px;
+        left: 16px;
+        right: 276px;
+        max-width: 220px;
+    }
+
+    .summary-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 4px;
+    }
+
+    @media (max-width: 1279px) {
+        .connection-status,
+        .stock-summary {
+            display: none;
+        }
+    }
+
+    /* Animaciones suaves */
+    .mud-nav-group .mud-collapse-container {
+        transition: max-height 0.3s ease;
+    }
+
+    .mud-nav-link.active {
+        background: linear-gradient(90deg, var(--mud-palette-primary), var(--mud-palette-primary-darken));
+        color: white !important;
+        font-weight: 600;
+    }
+
+    .mud-nav-link.active::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 4px;
+        height: 24px;
+        background: var(--mud-palette-secondary);
+        border-radius: 0 2px 2px 0;
+    }
+</style>
+
+@code {
+    private bool isOnline = true;
+    private string lastSync = "Hace 2 min";
+    
+    private string connectionIcon => isOnline ? Icons.Material.Filled.Wifi : Icons.Material.Filled.WifiOff;
+    private Color connectionColor => isOnline ? Color.Success : Color.Error;
+    private string connectionText => isOnline ? "En línea" : "Sin conexión";
+
+    protected override void OnInitialized()
+    {
+        // TODO: Implementar detección de conexión real
+        CheckConnectionStatus();
+    }
+
+    private void CheckConnectionStatus()
+    {
+        // Simulación de estado de conexión
+        isOnline = true;
+    }
+
+    private async Task RefreshData()
+    {
+        // TODO: Implementar sincronización real
+        lastSync = "Ahora";
+        StateHasChanged();
+        
+        await Task.Delay(1000);
+        lastSync = "Hace 1 min";
+        StateHasChanged();
+    }
+} 

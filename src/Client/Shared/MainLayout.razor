@@ -1,0 +1,273 @@
+@using MudBlazor
+@inherits LayoutView
+
+<MudThemeProvider @ref="@mudThemeProvider" Theme="currentTheme" />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<MudLayout>
+    <!-- AppBar Superior -->
+    <MudAppBar Elevation="1" Class="app-bar">
+        <MudIconButton Icon="Icons.Material.Filled.Menu" 
+                      Color="Color.Inherit" 
+                      Edge="Edge.Start" 
+                      OnClick="@((e) => DrawerToggle())" />
+        
+        <MudText Typo="Typo.h5" Class="ml-3">
+            <MudIcon Icon="Icons.Material.Filled.AutoAwesome" Class="mr-2" />
+            MagicStock
+        </MudText>
+        
+        <MudSpacer />
+        
+        <!-- Buscador Global -->
+        <MudTextField T="string" 
+                     Placeholder="Buscar cartas..." 
+                     Adornment="Adornment.Start" 
+                     AdornmentIcon="Icons.Material.Filled.Search"
+                     IconSize="Size.Medium" 
+                     Class="search-field mr-4"
+                     Variant="Variant.Outlined"
+                     Margin="Margin.Dense" />
+        
+        <!-- Botones de acción -->
+        <MudIconButton Icon="@themeIcon" 
+                      Color="Color.Inherit" 
+                      OnClick="@ToggleTheme"
+                      Title="Cambiar tema" />
+        
+        <MudIconButton Icon="Icons.Material.Filled.Notifications" 
+                      Color="Color.Inherit"
+                      Title="Notificaciones" />
+        
+        <MudMenu Icon="Icons.Material.Filled.AccountCircle" 
+                Color="Color.Inherit" 
+                Direction="Origin.BottomLeft">
+            <MudMenuItem Icon="Icons.Material.Filled.Person">Perfil</MudMenuItem>
+            <MudMenuItem Icon="Icons.Material.Filled.Settings">Configuración</MudMenuItem>
+            <MudDivider />
+            <MudMenuItem Icon="Icons.Material.Filled.Logout">Cerrar Sesión</MudMenuItem>
+        </MudMenu>
+    </MudAppBar>
+
+    <!-- Drawer de Navegación -->
+    <MudDrawer @bind-Open="drawerOpen" 
+              ClipMode="DrawerClipMode.Always" 
+              Elevation="2"
+              Class="navigation-drawer">
+        <MudDrawerHeader Class="drawer-header">
+            <MudText Typo="Typo.h6" Class="fw-bold">
+                🎯 MagicStock v1.1
+            </MudText>
+            <MudText Typo="Typo.caption" Color="Color.Secondary">
+                Gestión Profesional MTG
+            </MudText>
+        </MudDrawerHeader>
+        
+        <NavMenu />
+    </MudDrawer>
+
+    <!-- Contenido Principal -->
+    <MudMainContent Class="main-content">
+        <MudContainer MaxWidth="MaxWidth.False" Class="pa-4">
+            @Body
+        </MudContainer>
+    </MudMainContent>
+
+    <!-- FAB para acciones rápidas -->
+    <MudFab Color="Color.Primary" 
+           StartIcon="Icons.Material.Filled.Add" 
+           Class="fab-add"
+           Title="Añadir carta al stock"
+           OnClick="@ShowAddCardDialog" />
+</MudLayout>
+
+<!-- Instalación PWA -->
+@if (showPwaInstall)
+{
+    <MudAlert Severity="Severity.Info" 
+             ShowCloseIcon="true" 
+             CloseIconClicked="@(() => showPwaInstall = false)"
+             Class="pwa-install-alert">
+        <div class="d-flex align-center">
+            <MudIcon Icon="Icons.Material.Filled.GetApp" Class="mr-3" />
+            <div class="flex-grow-1">
+                <MudText Typo="Typo.subtitle2">¡Instala MagicStock!</MudText>
+                <MudText Typo="Typo.caption">Accede más rápido desde tu escritorio</MudText>
+            </div>
+            <MudButton Variant="Variant.Text" 
+                      Color="Color.Primary" 
+                      OnClick="@InstallPwa">
+                Instalar
+            </MudButton>
+        </div>
+    </MudAlert>
+}
+
+<style>
+    .app-bar {
+        background: var(--mud-palette-primary) !important;
+    }
+
+    .search-field {
+        max-width: 300px;
+    }
+
+    .drawer-header {
+        background: linear-gradient(135deg, var(--mud-palette-primary), var(--mud-palette-secondary));
+        color: white;
+        padding: 24px 16px;
+    }
+
+    .navigation-drawer {
+        border-right: 1px solid var(--mud-palette-divider);
+    }
+
+    .main-content {
+        background: var(--mud-palette-background-grey);
+        min-height: calc(100vh - 64px);
+    }
+
+    .fab-add {
+        position: fixed !important;
+        bottom: 24px;
+        right: 24px;
+        z-index: 1000;
+    }
+
+    .pwa-install-alert {
+        position: fixed;
+        top: 80px;
+        right: 16px;
+        max-width: 400px;
+        z-index: 1200;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    }
+
+    @media (max-width: 768px) {
+        .search-field {
+            display: none;
+        }
+        
+        .fab-add {
+            bottom: 16px;
+            right: 16px;
+        }
+    }
+</style>
+
+@code {
+    private bool drawerOpen = true;
+    private bool isDarkMode = false;
+    private bool showPwaInstall = false;
+    private MudThemeProvider? mudThemeProvider;
+    
+    private MudTheme currentTheme = new()
+    {
+        Palette = new PaletteLight()
+        {
+            Primary = "#512BD4",
+            Secondary = "#FF6B6B",
+            Tertiary = "#4ECDC4",
+            Success = "#2ECC71",
+            Warning = "#F39C12",
+            Error = "#E74C3C",
+            Dark = "#2C3E50",
+            Background = "#FFFFFF",
+            BackgroundGrey = "#F8F9FA",
+            Surface = "#FFFFFF",
+            DrawerBackground = "#FFFFFF",
+            AppbarBackground = "#512BD4",
+            TextPrimary = "#2C3E50",
+            TextSecondary = "#7F8C8D"
+        },
+        LayoutProperties = new LayoutProperties()
+        {
+            DrawerWidthLeft = "260px",
+            AppbarHeight = "64px"
+        },
+        Typography = new Typography()
+        {
+            Default = new Default()
+            {
+                FontFamily = new[] { "Inter", "Helvetica", "Arial", "sans-serif" }
+            }
+        }
+    };
+
+    private string themeIcon => isDarkMode ? Icons.Material.Filled.LightMode : Icons.Material.Filled.DarkMode;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            // Detectar preferencia de tema del sistema
+            if (mudThemeProvider != null)
+            {
+                isDarkMode = await mudThemeProvider.GetSystemPreference();
+                await mudThemeProvider.WatchSystemPreference(OnSystemPreferenceChanged);
+                StateHasChanged();
+            }
+
+            // Mostrar alerta de instalación PWA después de 3 segundos
+            await Task.Delay(3000);
+            showPwaInstall = true;
+            StateHasChanged();
+        }
+    }
+
+    private void DrawerToggle()
+    {
+        drawerOpen = !drawerOpen;
+    }
+
+    private async Task ToggleTheme()
+    {
+        isDarkMode = !isDarkMode;
+        
+        currentTheme = isDarkMode ? new MudTheme()
+        {
+            Palette = new PaletteDark()
+            {
+                Primary = "#664EF7",
+                Secondary = "#FF6B6B",
+                Tertiary = "#4ECDC4",
+                Success = "#2ECC71",
+                Warning = "#F39C12",
+                Error = "#E74C3C",
+                Dark = "#0D1117",
+                Background = "#0D1117",
+                BackgroundGrey = "#161B22",
+                Surface = "#21262D",
+                DrawerBackground = "#161B22",
+                AppbarBackground = "#21262D",
+                TextPrimary = "#F0F6FC",
+                TextSecondary = "#8B949E"
+            }
+        } : new MudTheme()
+        {
+            Palette = currentTheme.Palette
+        };
+
+        StateHasChanged();
+    }
+
+    private Task OnSystemPreferenceChanged(bool isDark)
+    {
+        isDarkMode = isDark;
+        StateHasChanged();
+        return Task.CompletedTask;
+    }
+
+    private async Task ShowAddCardDialog()
+    {
+        // TODO: Implementar diálogo de agregar carta
+        await Task.CompletedTask;
+    }
+
+    private async Task InstallPwa()
+    {
+        await JSRuntime.InvokeVoidAsync("showInstallPrompt");
+        showPwaInstall = false;
+    }
+} 
