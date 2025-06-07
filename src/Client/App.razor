@@ -1,0 +1,38 @@
+<Router AppAssembly="@typeof(App).Assembly">
+    <Found Context="routeData">
+        <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
+        <FocusOnNavigate RouteData="@routeData" Selector="h1" />
+    </Found>
+    <NotFound>
+        <PageTitle>404 - MagicStock</PageTitle>
+        <LayoutView Layout="@typeof(MainLayout)">
+            <div class="not-found-container">
+                <MudContainer Class="mt-16">
+                    <MudText Typo="Typo.h3" Align="Align.Center" GutterBottom="true">
+                        🎯 Página no encontrada
+                    </MudText>
+                    <MudText Typo="Typo.subtitle1" Align="Align.Center" Class="mb-4">
+                        La página que buscas no existe en MagicStock
+                    </MudText>
+                    <div class="d-flex justify-center">
+                        <MudButton Variant="Variant.Filled" 
+                                  Color="Color.Primary" 
+                                  Href="/"
+                                  StartIcon="Icons.Material.Filled.Home">
+                            Volver al inicio
+                        </MudButton>
+                    </div>
+                </MudContainer>
+            </div>
+        </LayoutView>
+    </NotFound>
+</Router>
+
+<style>
+    .not-found-container {
+        min-height: 60vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+</style> 
