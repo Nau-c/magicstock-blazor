@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MagicStock - Gestión Profesional de Cartas MTG</title>
+    <base href="/" />
+
+    <!-- PWA Meta tags -->
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#512BD4" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="MagicStock" />
+    <link rel="apple-touch-icon" href="icon-192.png" />
+
+    <!-- SEO Meta tags -->
+    <meta name="description"
+        content="Aplicación profesional para gestionar tu colección de cartas Magic: The Gathering con estadísticas, dashboard y análisis avanzado." />
+    <meta name="keywords" content="Magic The Gathering, MTG, cartas, colección, stock, inventario, blazor, pwa" />
+    <meta name="author" content="MagicStock Team" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="MagicStock - Gestión de Cartas MTG" />
+    <meta property="og:description" content="La mejor aplicación para gestionar tu colección Magic" />
+    <meta property="og:image" content="icon-512.png" />
+    <meta property="og:url" content="https://magicstock.app" />
+    <meta property="og:type" content="website" />
+
+    <!-- MudBlazor CSS -->
+    <link href="_content/MudBlazor/MudBlazor.min.css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link href="css/app.css" rel="stylesheet" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
+</head>
+
+<body>
+    <div id="app">
+        <!-- Loading Screen Profesional -->
+        <div class="loading-container">
+            <div class="loading-content">
+                <div class="magic-logo">
+                    <div class="mana-symbol">🎯</div>
+                </div>
+                <h1>MagicStock</h1>
+                <p>Cargando tu colección mágica...</p>
+                <div class="loading-spinner">
+                    <div class="spinner-ring"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="blazor-error-ui">
+        <div class="error-container">
+            <div class="error-content">
+                <h3>🚨 Error en la aplicación</h3>
+                <p>Ha ocurrido un error inesperado. Por favor, recarga la página.</p>
+                <button onclick="location.reload()">🔄 Recargar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="_framework/blazor.webassembly.js"></script>
+    <script src="_content/MudBlazor/MudBlazor.min.js"></script>
+
+    <!-- PWA Registration -->
+    <script>
+        // Registrar Service Worker
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/service-worker.js')
+                .then(reg => console.log('✅ Service Worker registrado:', reg))
+                .catch(err => console.log('❌ Error registrando SW:', err));
+        }
+
+        // Funciones de utilidad
+        window.downloadFile = (filename, content) => {
+            const element = document.createElement('a');
+            element.setAttribute('href', 'data:application/octet-stream;base64,' + content);
+            element.setAttribute('download', filename);
+            element.style.display = 'none';
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+        };
+
+        // PWA Install Prompt
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            console.log('💾 PWA installation available');
+        });
+
+        window.showInstallPrompt = () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('✅ Usuario instaló la PWA');
+                    }
+                    deferredPrompt = null;
+                });
+            }
+        };
+    </script>
+
+    <style>
+        /* Loading Screen */
+        .loading-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+
+        .loading-content {
+            text-align: center;
+            color: white;
+        }
+
+        .magic-logo {
+            margin-bottom: 20px;
+        }
+
+        .mana-symbol {
+            font-size: 4rem;
+            animation: pulse 2s infinite;
+        }
+
+        .loading-content h1 {
+            font-family: 'Inter', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 20px 0 10px;
+            color: white;
+        }
+
+        .loading-content p {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .loading-spinner {
+            display: flex;
+            justify-content: center;
+        }
+
+        .spinner-ring {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top: 3px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        /* Error UI */
+        #blazor-error-ui {
+            background: #ffebee;
+            bottom: 0;
+            box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
+            display: none;
+            left: 0;
+            padding: 0.6rem 1.25rem 0.7rem 1.25rem;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .error-container {
+            text-align: center;
+        }
+
+        .error-content h3 {
+            color: #d32f2f;
+            margin: 0 0 10px;
+        }
+
+        .error-content button {
+            background: #d32f2f;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .error-content button:hover {
+            background: #b71c1c;
+        }
+
+        #blazor-error-ui .dismiss {
+            cursor: pointer;
+            position: absolute;
+            right: 0.75rem;
+            top: 0.5rem;
+        }
+
+        /* Animations */
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Global Styles */
+        body {
+            margin: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f5;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+    </style>
+</body>
+
+</html>
