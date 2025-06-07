@@ -213,4 +213,4 @@ Usamos [Conventional Commits](https://www.conventionalcommits.org/):
 
 *Hecho con ❤️ y mucho ☕ usando .NET 8 y Blazor*
 
-</div> 
+</div> # magicstock-blazor
