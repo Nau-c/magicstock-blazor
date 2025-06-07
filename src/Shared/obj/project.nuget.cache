@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "fKoF4d+Kd9k=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\nauze\\Documents\\DEV\\magicstock-blazor\\src\\Shared\\MagicStock.Shared.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\nauze\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512",
+    "C:\\Users\\nauze\\.nuget\\packages\\system.text.json\\8.0.5\\system.text.json.8.0.5.nupkg.sha512"
+  ],
+  "logs": []
+}
